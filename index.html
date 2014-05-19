@@ -1,0 +1,263 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="description" content="Keeping components focused, independent, reusable and small (FIRS) allows you to compose larger projects from them that are more easily maintainable.">
+<meta property="og:title" content="Title Components Should Be Focused, Independent, Reusable And Small (FIRS)" /> 
+<meta property="og:type" content="article" /> 
+<meta property="og:url" content=" http://pascalprecht.github.io/first/index.html" />
+<meta property="og:image" content="http://pascalprecht.github.io/first/header.png" />
+<meta property="og:description" content="Keeping components focused, independent, reusable, small and testable (FIRST) allows you to compose larger projects from them that are more easily maintainable." />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<style>
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote {
+    margin: 0;
+    padding: 0;
+}
+body {
+    font-family: "Cambria", "Georgia Pro",georgia,serif;
+    text-rendering: optimizeLegibility;
+    font-size: 24px;
+    line-height: 36px;
+    color: #737373;
+    background-color: white;
+    margin: 10px 13px 10px 13px;
+}
+table {
+	margin: 10px 0 15px 0;
+	border-collapse: collapse;
+}
+td,th {	
+	border: 1px solid #ddd;
+	padding: 3px 10px;
+}
+th {
+	padding: 5px 10px;	
+}
+
+footer {
+    margin-top: 50px;
+    padding-bottom:100px;
+}
+
+a {
+    color: #0069d6;
+}
+a:hover {
+    color: #0050a3;
+    text-decoration: none;
+}
+a img {
+    border: none;
+}
+p {
+    margin-bottom: 24px;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: #404040;
+    line-height: 36px;
+}
+h1 {
+    margin-bottom: 18px;
+    font-size: 44px;
+    line-height: 48px;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+h2 {
+    font-size: 24px;
+}
+h3 {
+    font-size: 18px;
+}
+h4 {
+    font-size: 16px;
+}
+h5 {
+    font-size: 14px;
+}
+h6 {
+    font-size: 13px;
+}
+hr {
+    margin: 0 0 19px;
+    border: 0;
+    border-bottom: 1px solid #ccc;
+}
+blockquote {
+    padding: 13px 13px 21px 15px;
+    margin-bottom: 18px;
+    font-family:georgia,serif;
+    font-style: italic;
+}
+blockquote:before {
+    content:"\201C";
+    font-size:40px;
+    margin-left:-10px;
+    font-family:georgia,serif;
+    color:#eee;
+}
+blockquote p {
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 18px;
+    margin-bottom: 0;
+    font-style: italic;
+}
+code, pre {
+    font-family: Monaco, Andale Mono, Courier New, monospace;
+}
+code {
+    background-color: #fee9cc;
+    color: rgba(0, 0, 0, 0.75);
+    padding: 1px 3px;
+    font-size: 12px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+}
+pre {
+    display: block;
+    padding: 14px;
+    margin: 0 0 18px;
+    line-height: 16px;
+    font-size: 11px;
+    border: 1px solid #d9d9d9;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+pre code {
+    background-color: #fff;
+    color:#737373;
+    font-size: 11px;
+    padding: 0;
+}
+sup {
+    font-size: 0.83em;
+    vertical-align: super;
+    line-height: 0;
+}
+.header-image {
+    margin:0 auto;
+    width:100%;
+    text-align: center;
+}
+.takeaway p{
+    font-weight: bold;
+}
+figcaption {
+    font-size: 13px;
+    color: #ccc;
+    text-align: center;
+}
+* {
+	-webkit-print-color-adjust: exact;
+}
+@media screen and (min-width: 914px) {
+    body {
+        width: 854px;
+        margin:10px auto;
+    }
+}
+@media screen and (max-width: 400px) {
+    h1 {
+        font-size: 24px;
+        line-height: 28px;
+    }
+    body {
+        font-size: 20px;
+        line-height: 32px;        
+    }
+
+    figcaption {
+        font-size: 8px;
+    }
+}
+@media print {
+	body,code,pre code,h1,h2,h3,h4,h5,h6 {
+		color: black;
+	}
+	table, pre {
+		page-break-inside: avoid;
+	}
+}
+</style>
+<title>Components Should Be Focused, Independent, Reusable And Small (FIRS)</title>
+
+</head>
+<body>
+<h1>Components Should Be Focused, Independent, Reusable &amp; Small (FIRS)</h1>
+
+<a href="https://twitter.com/share" class="twitter-share-button" data-via="addyosmani">Tweet</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+<p>
+<img class="header-image" src="header.png" alt="The FIRST logo representing fir trees">
+</p>
+<p>Whether it’s a client or server-side component, a Node module or a piece of visual UI, components that are <a href="http://addyosmani.com/largescalejavascript/">large</a> are inherently more complex to maintain than those than are small.</p>
+
+<p>In fact, the <em>secret</em> to efficiently building ‘large’ things is generally to avoid building them in the first place. Instead, compose your large thing out of <strong>smaller</strong>, more <strong>focused</strong> pieces. This makes it easier to see how the small thing fits within the broader scope of your large thing. These concepts apply to existing ways of doing things, including Web Components.</p>
+
+<p>Focus and modularity has worked to some degree of success in the Node community and is equally as valuable across other parts of our field for a few reasons:</p>
+
+<ul>
+<li><p><strong>Smaller APIs</strong> are easier to learn and teach to others. This is generally helped if you <a href="http://en.wikipedia.org/wiki/Single_responsibility_principle">do one thing and do it well</a><strong>. </strong></p></li>
+<li><p><strong>Code reuse</strong> can save you time. Reusability in itself is often a side-product of writing code that happens to be well structured and well defined. It does help when you can just drop in an existing component vs. writing one from scratch. You're likely to discover flaws in the original design that you improve on over time, but the more your component is reused, the more you fix these flaws, improving reusability.</p></li>
+<li><p><strong>Improved composability</strong>. This means new components can be built by extending existing ones. This again allows for a great deal of code reuse, avoiding re-implementation of the same functionality across projects.</p></li>
+<li><p><strong>An increase in maintainability </strong>is possible thanks to a reduction in complexity. By splitting out a component into something smaller, it’s generally easier to test and document. Keeping your component source DRY can help.</p></li>
+<li><p><strong>Separation of concerns</strong>. If each component addresses a specific concern, this simplifies the update cycle as one component doesn't always need to know the details of others. Note that separation of concerns does not always equate to separation of technologies. Keeping logical, related parts of a system together can make it more easy to understand and maintain.</p></li>
+<li><p><strong>Simplified debugging.</strong> This is more implementation specific, but granularity should make it more straight-forward to identify and fix problems by making it simpler to determine the true source of errors.</p></li>
+<li><p><strong>Easier understanding of your large system</strong> as you’ve broken it into smaller, more well grained pieces</p></li>
+</ul>
+
+
+<p>On the whole, approaching components with modularity and a focus in mind increases reuse, eases maintenance and improves extensibility. Diligence does need to be taken with making something ‘focused’ however.</p>
+
+<p>If you’re building components to be shared with the community or even just your team, ask yourself if features in your API will be used by 90% of users. If so, it’s likely pretty core functionality and should stay. If a feature it going to be used by the 10%, it should probably be a separate component or module. Avoid code bloat.</p>
+
+<p>Some may read this and think, "Great!.. but practically speaking modularity from the get-go is not always possible". This is fine. Some developers find it more feasible to build an integrated solution first and then extract out useful modules. This can save time on public interfaces that might turn out to be wrong, but ultimately leads to the same end-goal: having a collection of components that can be reused in future projects.</p>
+
+<p>When you’re trying to build a component, whether it’s visual or non-visual try to keep in mind four things:</p>
+
+<div class="takeaway">
+<p>Keep it (F)ocused.</p>
+
+<p>Keep it (I)ndependent.</p>
+
+<p>Keep it (R)eusable.</p>
+
+<p>Keep it (S)mall.</p>
+
+<p>Keep it (T)estable.</p>
+
+</div>
+
+<p>or in short, <strong>FIRST</strong>.</p>
+<p>~ Addy & Pascal</p>
+
+<p><i><small>With special thanks to Pascal Hartig, Sindre Sorhus and Stephen Sawchuk for their review.</small></i></p>
+<footer>
+    <a href="http://addyosmani.com">AddyOsmani.com</a>
+</footer>
+<script type="text/javascript">var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-10445040-2']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+</script>
+</body>
+</html>
